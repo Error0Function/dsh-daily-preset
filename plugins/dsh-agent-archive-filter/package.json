@@ -1,0 +1,55 @@
+{
+  "name": "dsh-agent-archive-filter",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Hide archived child agents from the session header catalog in Web and Desktop",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-subagent",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-primitives",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-api-session-controller": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-conversation": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-session": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-subagent": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-workspace": ">=0.1.7",
+    "@deepseek-ai/dsh-token-meter": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.7",
+    "@deepseek-ai/dsh-client-locale": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-renderer": ">=0.1.7",
+    "@deepseek-ai/dsh-session": ">=0.1.7",
+    "@deepseek-ai/dsh-session-projection": ">=0.1.7",
+    "@deepseek-ai/dsh-subagent": ">=0.1.7",
+    "@types/react": "*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@deepseek-ai/dsh-client-ui-sidebar-right": ">=0.1.7"
+  },
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,4 @@
+{
+  "compilerOptions": { "target": "ES2023", "module": "NodeNext", "moduleResolution": "NodeNext", "strict": true, "noEmit": true, "skipLibCheck": true, "types": ["react"], "jsx": "react-jsx", "allowImportingTsExtensions": true },
+  "include": ["src/client.tsx", "src/client-contract.ts", "src/locales.ts", "src/settings-types.ts"]
+}

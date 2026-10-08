@@ -1,0 +1,17 @@
+- id: session-persistence-jsonl
+  inject: [sessionCleanup]
+- id: agent-loop
+  inject: [sessionCleanup]
+- id: session-query-sqlite
+  inject: [sessionCleanup]
+- id: session-projection-cache
+  inject: [sessionCleanup]
+- id: workspace
+  inject: [sessionCleanup]
+- insert:
+    - id: session-cleanup
+      name: ./lib/index.js
+      config:
+        sessionRoot: !!js dshHomePath('sessions')
+        queueFile: !!js dshHomePath('session-cleanup.json')
+        lockWaitMs: 30000

@@ -1,0 +1,23 @@
+{
+  "name": "dsh-agent-control",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Wait for and archive direct continuable children using native DSH sessions.",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/schemastery": "*",
+    "@deepseek-ai/dsh-agent": ">=0.1.7",
+    "@deepseek-ai/dsh-tools": ">=0.1.7",
+    "@deepseek-ai/dsh-session": ">=0.1.7",
+    "@deepseek-ai/dsh-subagent": ">=0.1.7",
+    "@deepseek-ai/dsh-session-query": ">=0.1.7",
+    "@deepseek-ai/dsh-workspace": ">=0.1.7",
+    "@deepseek-ai/dsh-util-values": ">=0.1.7"
+  },
+  "license": "MIT"
+}
