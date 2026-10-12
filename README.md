@@ -1,16 +1,55 @@
+# 个人自用，需要自取，以下介绍为AI攥写
+# For personal use only, please pick up as needed. The following description is AI-generated.
+
 # DSH Daily Mode
 
-Daily Mode 为 Desktop/Web 保留原有 daily preset，为 Headless 提供同一事务语义所需的策略、工具、上下文裁剪和 Agent 控制层。Headless 组合直接复用这些插件，不改变事务处理逻辑。
+English | [中文](README.zh.md)
 
-插件声明兼容 DSH `>=0.1.7`，实际接口兼容性由 DSH 原生安装和启动流程判断。
+Daily Mode is a public DeepSeek Harness bundle for a general-purpose daily workflow. It keeps the same transaction semantics across Desktop, Web and Headless profiles while adding native tools, context presentation, child-agent controls, archive filtering and session cleanup.
 
-## 工作区安装
+The package declares compatibility with DSH `>=0.1.7`. DSH's native plugin loader performs the compatibility check for the installed Host.
 
-源码位于 `F:\SN850\Code\AI\dsh-plugin-workspace\plugins\dsh-daily-mode`，由独立 Git 仓库管理。通过工作区脚本构建不可变快照并同步到三个 profile：
+## Install from Git
+
+Install the public repository with DSH's native profile manager:
 
 ```powershell
-cd F:\SN850\Code\AI\dsh-plugin-workspace
-uv run workspace.py sync dsh-daily-mode --profiles=desktop,web,headless
+dsh plugin --profile desktop add github:Error0Function/dsh-daily-preset
+dsh plugin --profile web add github:Error0Function/dsh-daily-preset
+dsh plugin --profile headless add github:Error0Function/dsh-daily-preset
 ```
 
-同步安装 `.tgz` 快照，不把运行中的 Host 链接到开发源码。Desktop 返回 `restart-required` 时，从 Desktop 菜单重新启动应用及 Host；旧快照会保留，确认不再被 profile 引用后再执行 `uv run workspace.py clean`。
+Install it in each profile that should provide Daily Mode. The repository includes its built `lib` output and bundle patches, so a Git installation does not depend on a separate workspace or a linked development checkout. Pin the repository to a reviewed commit with `github:Error0Function/dsh-daily-preset#<commit>` when reproducible deployments are required. Restart the DSH Host after installation or replacement so the running process loads the new package.
+
+## What it provides
+
+- A daily preset with native tools, permissions, goals, skills and model routing.
+- Context presentation rules for the main Agent and its child Agents.
+- Agent waiting, archiving and client-side archive filtering.
+- Confirmed cleanup of archived sessions during Host startup.
+- Desktop and Web settings for the mode and child-model configuration.
+- Headless policy, context and Agent-control components with the same session semantics.
+
+The child Agent uses the parent model and effort by default. A different model can be selected through DSH's native settings. Settings are stored by DSH; this package does not require a separate configuration synchronizer or a login plugin.
+
+## Permissions and scope
+
+The daily preset requests DSH's `danger-full-access` permission preset because its workflow is intended for general local development and file operations. Review that policy before enabling the bundle in a profile.
+
+The client components target Desktop and Web. Headless loads the model-facing policy, context and Agent-control components; it does not need a client connection service. Model credentials, MCP services, global instructions and compression policy remain the user's DSH configuration.
+
+## Build from source
+
+To rebuild the committed artifacts, use a compatible DSH source checkout:
+
+```powershell
+$env:DSH_REPO = 'path to a compatible DSH source checkout'
+node build.mjs
+npm pack . --ignore-scripts --pack-destination <output-directory>
+```
+
+The build records the DSH compatibility floor in `package.json`. Keep the generated `lib` output and bundle files in the same release commit; DSH Git installation consumes those committed artifacts.
+
+## License and notices
+
+This project is released under the [MIT License](LICENSE). The [third-party notices](THIRD_PARTY_NOTICES.md) identify bundled upstream code and its licenses.

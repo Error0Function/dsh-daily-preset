@@ -116,6 +116,7 @@
     "build-support.mjs",
     "tsconfig.json",
     "README.md",
+    "README.zh.md",
     "THIRD_PARTY_NOTICES.md",
     "tsconfig.host.json",
     "tsconfig.client.json",

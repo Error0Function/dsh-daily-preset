@@ -107,7 +107,7 @@ node build.mjs
 npm pack . --ignore-scripts --pack-destination <输出目录>
 ```
 
-运行状态默认保存在 DSH Home。`.gitignore` 覆盖数据目录、凭据、会话记录、数据库、锁、日志、依赖目录和临时文件；本机个人指令和编辑器设置放入 `.git/info/exclude`。分发跟踪预构建 `lib` 与本项目维护 Skill，排除用户数据和开发记录。
+运行状态默认保存在 DSH Home。`.gitignore` 覆盖数据目录、凭据、会话记录、数据库、锁、日志、依赖目录和临时文件；本机个人指令和编辑器设置放入 `.git/info/exclude`。公开包跟踪预构建 `lib` 与维护 Skill，用户数据和开发记录不属于发布内容。
 
 [LICENSE](LICENSE) 保留本项目许可，[第三方声明](THIRD_PARTY_NOTICES.md) 记录所包含的上游代码来源和许可；更新构建来源时同步相关声明。
 
