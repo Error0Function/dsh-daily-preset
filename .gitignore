@@ -1,0 +1,40 @@
+# Dependencies and local build output; lib is the shipped runtime code.
+node_modules/
+dist/
+*.tsbuildinfo
+*.tgz
+
+# Credentials and runtime records.
+.dsh/
+.credentials.*
+.env
+.env.*
+.npmrc
+.pnpmrc
+auth.json
+credentials.json
+session-cleanup.json*
+*.log
+*.tmp
+*.lock
+*.jsonl
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+
+# DSH Home when explicitly placed at the repository root.
+/sessions/
+/storages/
+/profiles/
+/attachments/
+
+# Only the project's maintenance skill belongs in this repository.
+/.agents/*
+!/.agents/skills/
+/.agents/skills/*
+!/.agents/skills/maintain-dsh-daily-mode/
+
+.cache/
+.DS_Store
+Thumbs.db

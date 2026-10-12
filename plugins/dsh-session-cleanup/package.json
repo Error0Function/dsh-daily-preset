@@ -1,0 +1,56 @@
+{
+  "name": "dsh-session-cleanup",
+  "version": "0.2.1",
+  "private": true,
+  "type": "module",
+  "description": "User-triggered permanent cleanup of archived DSH sessions on Host restart",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "dsh-daily-mode",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-renderer"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/schemastery": "*",
+    "@deepseek-ai/dsh-atomic-write": ">=0.1.7",
+    "@deepseek-ai/dsh-workspace": ">=0.1.7",
+    "@deepseek-ai/dsh-storage-domain": ">=0.1.7",
+    "@deepseek-ai/dsh-session": ">=0.1.7",
+    "@deepseek-ai/dsh-session-persistence": ">=0.1.7",
+    "@deepseek-ai/dsh-session-projection-cache": ">=0.1.7",
+    "@deepseek-ai/dsh-session-format": ">=0.1.7",
+    "@deepseek-ai/dsh-session-format-catalog": ">=0.1.7",
+    "@deepseek-ai/dsh-session-format-v3-to-v4": ">=0.1.7",
+    "@deepseek-ai/node-addon-system": "*",
+    "@deepseek-ai/dsh-client-connection": ">=0.1.7",
+    "@deepseek-ai/dsh-client-store": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-slots": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-settings": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-settings-general": ">=0.1.7",
+    "@deepseek-ai/dsh-client-locale": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-renderer": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-layout": ">=0.1.7",
+    "@deepseek-ai/dsh-client-ui-primitives": ">=0.1.7",
+    "koffi": "*",
+    "react": "^18.3.1",
+    "zod": "*"
+  },
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml"
+  ],
+  "license": "MIT"
+}

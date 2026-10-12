@@ -1,0 +1,76 @@
+# The direct headless runner has no Web preset registry. These rows provide the
+# same daily Host policy and model-facing tools only for that profile; the Web
+# and Desktop preset remains the owner of the corresponding rows there.
+- insert:
+    - id: daily-headless-policy
+      name: dsh-daily-mode/policy
+      disabled: !!js ctx.profileContext?.name !== 'headless'
+      config:
+        permissionPreset: danger-full-access
+    - id: daily-headless-context-trim
+      name: dsh-daily-mode/context-trim
+      disabled: !!js ctx.profileContext?.name !== 'headless'
+      config:
+        mergeFileGuidance: true
+        skillCatalog: true
+        workspaceInstructions: true
+        childReturnGuidance: true
+        goalWrapup: true
+    - id: daily-headless-agent-control
+      name: dsh-daily-mode/agent-control
+      disabled: !!js ctx.profileContext?.name !== 'headless'
+      config:
+        minTimeoutMinutes: 10
+        defaultTimeoutMinutes: 10
+        maxTimeoutMinutes: 60
+        hideArchived: true
+
+- id: agent-instructions
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+  config:
+    maxBytes: 65536
+- id: tool-pwsh
+  disabled: !!js ctx.profileContext?.name !== 'headless' && process.platform !== 'win32'
+  config:
+    enableRunInBackground: true
+    promoteOnTimeout: true
+- id: tool-bash
+  disabled: !!js ctx.profileContext?.name !== 'headless' && process.platform === 'win32'
+  config:
+    enableRunInBackground: true
+    promoteOnTimeout: true
+- id: tool-fs
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: tool-fs-search
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+  config:
+    sampleOverCapGlobResults: false
+- id: tool-jobs
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: skill-filesystem
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: tool-skill
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: command-goal
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: tool-goal
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+  config:
+    blockedAfterConsecutiveRounds: 3
+- id: compaction-basic
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: command-compact
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: tool-subagent-control
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+- id: tool-subagent
+  disabled: !!js ctx.profileContext?.name !== 'headless'
+  config:
+    provider: spawn
+    toolName: subagent
+    backgroundMode: continuable
+    enableRunInBackground: true
+    modelSelectionSettings: false
+    maxDepth: 1
+- id: tool-todo
+  disabled: !!js ctx.profileContext?.name !== 'headless'

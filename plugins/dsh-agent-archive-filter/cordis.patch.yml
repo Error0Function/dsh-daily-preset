@@ -1,0 +1,3 @@
+- insert:
+    - id: agent-archive-filter
+      name: ./lib/index.js
